@@ -18,16 +18,16 @@
       "type": "error"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.28+commit.7893614a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"length\",\"type\":\"uint256\"}],\"name\":\"StringsInsufficientHexLength\",\"type\":\"error\"}],\"devdoc\":{\"details\":\"String operations.\",\"errors\":{\"StringsInsufficientHexLength(uint256,uint256)\":[{\"details\":\"The `value` string doesn't fit in the specified `length`.\"}]},\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"@openzeppelin/contracts/utils/Strings.sol\":\"Strings\"},\"evmVersion\":\"cancun\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/utils/Panic.sol\":{\"keccak256\":\"0xf7fe324703a64fc51702311dc51562d5cb1497734f074e4f483bfb6717572d7a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c6a5ff4f9fd8649b7ee20800b7fa387d3465bd77cf20c2d1068cd5c98e1ed57a\",\"dweb:/ipfs/QmVSaVJf9FXFhdYEYeCEfjMVHrxDh5qL4CGkxdMWpQCrqG\"]},\"@openzeppelin/contracts/utils/Strings.sol\":{\"keccak256\":\"0x725209b582291bb83058e3078624b53d15a133f7401c30295e7f3704181d2aed\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0564ddb19c6d870e27b789d8f985283d815267ad7224883c2d5243c8bacc7dc0\",\"dweb:/ipfs/QmeC953H4sj88ZRFdJNFdmpf7J9SksP1wK4jyMHLo66z49\"]},\"@openzeppelin/contracts/utils/math/Math.sol\":{\"keccak256\":\"0xa00be322d7db5786750ce0ac7e2f5b633ac30a5ed5fa1ced1e74acfc19acecea\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6c84e822f87cbdc4082533b626667b6928715bb2b1e8e7eb96954cebb9e38c8d\",\"dweb:/ipfs/QmZmy9dgxLTerBAQDuuHqbL6EpgRxddqgv5KmwpXYVbKz1\"]},\"@openzeppelin/contracts/utils/math/SafeCast.sol\":{\"keccak256\":\"0x195533c86d0ef72bcc06456a4f66a9b941f38eb403739b00f21fd7c1abd1ae54\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b1d578337048cad08c1c03041cca5978eff5428aa130c781b271ad9e5566e1f8\",\"dweb:/ipfs/QmPFKL2r9CBsMwmUqqdcFPfHZB2qcs9g1HDrPxzWSxomvy\"]},\"@openzeppelin/contracts/utils/math/SignedMath.sol\":{\"keccak256\":\"0xb1970fac7b64e6c09611e6691791e848d5e3fe410fa5899e7df2e0afd77a99e3\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://db5fbb3dddd8b7047465b62575d96231ba8a2774d37fb4737fbf23340fabbb03\",\"dweb:/ipfs/QmVUSvooZKEdEdap619tcJjTLcAuH6QBdZqAzWwnAXZAWJ\"]}},\"version\":1}",
-  "bytecode": "0x6055604b600b8282823980515f1a607314603f577f4e487b71000000000000000000000000000000000000000000000000000000005f525f60045260245ffd5b305f52607381538281f3fe730000000000000000000000000000000000000000301460806040525f5ffdfea2646970667358221220660320078ff89b3b9e1e9ae87fef2272052ea179e4771c29b8e7250fb003e1ea64736f6c634300081c0033",
-  "deployedBytecode": "0x730000000000000000000000000000000000000000301460806040525f5ffdfea2646970667358221220660320078ff89b3b9e1e9ae87fef2272052ea179e4771c29b8e7250fb003e1ea64736f6c634300081c0033",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"length\",\"type\":\"uint256\"}],\"name\":\"StringsInsufficientHexLength\",\"type\":\"error\"}],\"devdoc\":{\"details\":\"String operations.\",\"errors\":{\"StringsInsufficientHexLength(uint256,uint256)\":[{\"details\":\"The `value` string doesn't fit in the specified `length`.\"}]},\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"@openzeppelin/contracts/utils/Strings.sol\":\"Strings\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/utils/Panic.sol\":{\"keccak256\":\"0xf7fe324703a64fc51702311dc51562d5cb1497734f074e4f483bfb6717572d7a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c6a5ff4f9fd8649b7ee20800b7fa387d3465bd77cf20c2d1068cd5c98e1ed57a\",\"dweb:/ipfs/QmVSaVJf9FXFhdYEYeCEfjMVHrxDh5qL4CGkxdMWpQCrqG\"]},\"@openzeppelin/contracts/utils/Strings.sol\":{\"keccak256\":\"0x725209b582291bb83058e3078624b53d15a133f7401c30295e7f3704181d2aed\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://0564ddb19c6d870e27b789d8f985283d815267ad7224883c2d5243c8bacc7dc0\",\"dweb:/ipfs/QmeC953H4sj88ZRFdJNFdmpf7J9SksP1wK4jyMHLo66z49\"]},\"@openzeppelin/contracts/utils/math/Math.sol\":{\"keccak256\":\"0xa00be322d7db5786750ce0ac7e2f5b633ac30a5ed5fa1ced1e74acfc19acecea\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://6c84e822f87cbdc4082533b626667b6928715bb2b1e8e7eb96954cebb9e38c8d\",\"dweb:/ipfs/QmZmy9dgxLTerBAQDuuHqbL6EpgRxddqgv5KmwpXYVbKz1\"]},\"@openzeppelin/contracts/utils/math/SafeCast.sol\":{\"keccak256\":\"0x195533c86d0ef72bcc06456a4f66a9b941f38eb403739b00f21fd7c1abd1ae54\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b1d578337048cad08c1c03041cca5978eff5428aa130c781b271ad9e5566e1f8\",\"dweb:/ipfs/QmPFKL2r9CBsMwmUqqdcFPfHZB2qcs9g1HDrPxzWSxomvy\"]},\"@openzeppelin/contracts/utils/math/SignedMath.sol\":{\"keccak256\":\"0xb1970fac7b64e6c09611e6691791e848d5e3fe410fa5899e7df2e0afd77a99e3\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://db5fbb3dddd8b7047465b62575d96231ba8a2774d37fb4737fbf23340fabbb03\",\"dweb:/ipfs/QmVUSvooZKEdEdap619tcJjTLcAuH6QBdZqAzWwnAXZAWJ\"]}},\"version\":1}",
+  "bytecode": "0x60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220bd83dbf27cc8921f9fb8f758b6e64ccaf1149df0b8f8c5daa3dd025cd294fa0c64736f6c63430008140033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220bd83dbf27cc8921f9fb8f758b6e64ccaf1149df0b8f8c5daa3dd025cd294fa0c64736f6c63430008140033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
   "sourceMap": "251:3680:9:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;",
   "deployedSourceMap": "251:3680:9:-:0;;;;;;;;",
   "source": "// SPDX-License-Identifier: MIT\n// OpenZeppelin Contracts (last updated v5.1.0) (utils/Strings.sol)\n\npragma solidity ^0.8.20;\n\nimport {Math} from \"./math/Math.sol\";\nimport {SignedMath} from \"./math/SignedMath.sol\";\n\n/**\n * @dev String operations.\n */\nlibrary Strings {\n    bytes16 private constant HEX_DIGITS = \"0123456789abcdef\";\n    uint8 private constant ADDRESS_LENGTH = 20;\n\n    /**\n     * @dev The `value` string doesn't fit in the specified `length`.\n     */\n    error StringsInsufficientHexLength(uint256 value, uint256 length);\n\n    /**\n     * @dev Converts a `uint256` to its ASCII `string` decimal representation.\n     */\n    function toString(uint256 value) internal pure returns (string memory) {\n        unchecked {\n            uint256 length = Math.log10(value) + 1;\n            string memory buffer = new string(length);\n            uint256 ptr;\n            assembly (\"memory-safe\") {\n                ptr := add(buffer, add(32, length))\n            }\n            while (true) {\n                ptr--;\n                assembly (\"memory-safe\") {\n                    mstore8(ptr, byte(mod(value, 10), HEX_DIGITS))\n                }\n                value /= 10;\n                if (value == 0) break;\n            }\n            return buffer;\n        }\n    }\n\n    /**\n     * @dev Converts a `int256` to its ASCII `string` decimal representation.\n     */\n    function toStringSigned(int256 value) internal pure returns (string memory) {\n        return string.concat(value < 0 ? \"-\" : \"\", toString(SignedMath.abs(value)));\n    }\n\n    /**\n     * @dev Converts a `uint256` to its ASCII `string` hexadecimal representation.\n     */\n    function toHexString(uint256 value) internal pure returns (string memory) {\n        unchecked {\n            return toHexString(value, Math.log256(value) + 1);\n        }\n    }\n\n    /**\n     * @dev Converts a `uint256` to its ASCII `string` hexadecimal representation with fixed length.\n     */\n    function toHexString(uint256 value, uint256 length) internal pure returns (string memory) {\n        uint256 localValue = value;\n        bytes memory buffer = new bytes(2 * length + 2);\n        buffer[0] = \"0\";\n        buffer[1] = \"x\";\n        for (uint256 i = 2 * length + 1; i > 1; --i) {\n            buffer[i] = HEX_DIGITS[localValue & 0xf];\n            localValue >>= 4;\n        }\n        if (localValue != 0) {\n            revert StringsInsufficientHexLength(value, length);\n        }\n        return string(buffer);\n    }\n\n    /**\n     * @dev Converts an `address` with fixed length of 20 bytes to its not checksummed ASCII `string` hexadecimal\n     * representation.\n     */\n    function toHexString(address addr) internal pure returns (string memory) {\n        return toHexString(uint256(uint160(addr)), ADDRESS_LENGTH);\n    }\n\n    /**\n     * @dev Converts an `address` with fixed length of 20 bytes to its checksummed ASCII `string` hexadecimal\n     * representation, according to EIP-55.\n     */\n    function toChecksumHexString(address addr) internal pure returns (string memory) {\n        bytes memory buffer = bytes(toHexString(addr));\n\n        // hash the hex part of buffer (skip length + 2 bytes, length 40)\n        uint256 hashValue;\n        assembly (\"memory-safe\") {\n            hashValue := shr(96, keccak256(add(buffer, 0x22), 40))\n        }\n\n        for (uint256 i = 41; i > 1; --i) {\n            // possible values for buffer[i] are 48 (0) to 57 (9) and 97 (a) to 102 (f)\n            if (hashValue & 0xf > 7 && uint8(buffer[i]) > 96) {\n                // case shift by xoring with 0x20\n                buffer[i] ^= 0x20;\n            }\n            hashValue >>= 4;\n        }\n        return string(buffer);\n    }\n\n    /**\n     * @dev Returns true if the two strings are equal.\n     */\n    function equal(string memory a, string memory b) internal pure returns (bool) {\n        return bytes(a).length == bytes(b).length && keccak256(bytes(a)) == keccak256(bytes(b));\n    }\n}\n",
-  "sourcePath": "@openzeppelin/contracts/utils/Strings.sol",
+  "sourcePath": "@openzeppelin\\contracts\\utils\\Strings.sol",
   "ast": {
     "absolutePath": "@openzeppelin/contracts/utils/Strings.sol",
     "exportedSymbols": {
@@ -571,19 +571,16 @@
                     },
                     {
                       "AST": {
-                        "nativeSrc": "899:67:9",
                         "nodeType": "YulBlock",
                         "src": "899:67:9",
                         "statements": [
                           {
-                            "nativeSrc": "917:35:9",
                             "nodeType": "YulAssignment",
                             "src": "917:35:9",
                             "value": {
                               "arguments": [
                                 {
                                   "name": "buffer",
-                                  "nativeSrc": "928:6:9",
                                   "nodeType": "YulIdentifier",
                                   "src": "928:6:9"
                                 },
@@ -591,7 +588,6 @@
                                   "arguments": [
                                     {
                                       "kind": "number",
-                                      "nativeSrc": "940:2:9",
                                       "nodeType": "YulLiteral",
                                       "src": "940:2:9",
                                       "type": "",
@@ -599,36 +595,30 @@
                                     },
                                     {
                                       "name": "length",
-                                      "nativeSrc": "944:6:9",
                                       "nodeType": "YulIdentifier",
                                       "src": "944:6:9"
                                     }
                                   ],
                                   "functionName": {
                                     "name": "add",
-                                    "nativeSrc": "936:3:9",
                                     "nodeType": "YulIdentifier",
                                     "src": "936:3:9"
                                   },
-                                  "nativeSrc": "936:15:9",
                                   "nodeType": "YulFunctionCall",
                                   "src": "936:15:9"
                                 }
                               ],
                               "functionName": {
                                 "name": "add",
-                                "nativeSrc": "924:3:9",
                                 "nodeType": "YulIdentifier",
                                 "src": "924:3:9"
                               },
-                              "nativeSrc": "924:28:9",
                               "nodeType": "YulFunctionCall",
                               "src": "924:28:9"
                             },
                             "variableNames": [
                               {
                                 "name": "ptr",
-                                "nativeSrc": "917:3:9",
                                 "nodeType": "YulIdentifier",
                                 "src": "917:3:9"
                               }
@@ -636,7 +626,7 @@
                           }
                         ]
                       },
-                      "evmVersion": "cancun",
+                      "evmVersion": "london",
                       "externalReferences": [
                         {
                           "declaration": 1601,
@@ -707,7 +697,6 @@
                           },
                           {
                             "AST": {
-                              "nativeSrc": "1058:86:9",
                               "nodeType": "YulBlock",
                               "src": "1058:86:9",
                               "statements": [
@@ -716,7 +705,6 @@
                                     "arguments": [
                                       {
                                         "name": "ptr",
-                                        "nativeSrc": "1088:3:9",
                                         "nodeType": "YulIdentifier",
                                         "src": "1088:3:9"
                                       },
@@ -726,13 +714,11 @@
                                             "arguments": [
                                               {
                                                 "name": "value",
-                                                "nativeSrc": "1102:5:9",
                                                 "nodeType": "YulIdentifier",
                                                 "src": "1102:5:9"
                                               },
                                               {
                                                 "kind": "number",
-                                                "nativeSrc": "1109:2:9",
                                                 "nodeType": "YulLiteral",
                                                 "src": "1109:2:9",
                                                 "type": "",
@@ -741,49 +727,41 @@
                                             ],
                                             "functionName": {
                                               "name": "mod",
-                                              "nativeSrc": "1098:3:9",
                                               "nodeType": "YulIdentifier",
                                               "src": "1098:3:9"
                                             },
-                                            "nativeSrc": "1098:14:9",
                                             "nodeType": "YulFunctionCall",
                                             "src": "1098:14:9"
                                           },
                                           {
                                             "name": "HEX_DIGITS",
-                                            "nativeSrc": "1114:10:9",
                                             "nodeType": "YulIdentifier",
                                             "src": "1114:10:9"
                                           }
                                         ],
                                         "functionName": {
                                           "name": "byte",
-                                          "nativeSrc": "1093:4:9",
                                           "nodeType": "YulIdentifier",
                                           "src": "1093:4:9"
                                         },
-                                        "nativeSrc": "1093:32:9",
                                         "nodeType": "YulFunctionCall",
                                         "src": "1093:32:9"
                                       }
                                     ],
                                     "functionName": {
                                       "name": "mstore8",
-                                      "nativeSrc": "1080:7:9",
                                       "nodeType": "YulIdentifier",
                                       "src": "1080:7:9"
                                     },
-                                    "nativeSrc": "1080:46:9",
                                     "nodeType": "YulFunctionCall",
                                     "src": "1080:46:9"
                                   },
-                                  "nativeSrc": "1080:46:9",
                                   "nodeType": "YulExpressionStatement",
                                   "src": "1080:46:9"
                                 }
                               ]
                             },
-                            "evmVersion": "cancun",
+                            "evmVersion": "london",
                             "externalReferences": [
                               {
                                 "declaration": 1573,
@@ -2388,7 +2366,6 @@
                     "nodeType": "VariableDeclarationStatement",
                     "src": "2187:26:9"
                   },
-                  "isSimpleCounterLoop": false,
                   "loopExpression": {
                     "expression": {
                       "id": 1726,
@@ -2525,8 +2502,8 @@
                             "referencedDeclaration": 1583,
                             "src": "2373:28:9",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_function_error_pure$_t_uint256_$_t_uint256_$returns$_t_error_$",
-                              "typeString": "function (uint256,uint256) pure returns (error)"
+                              "typeIdentifier": "t_function_error_pure$_t_uint256_$_t_uint256_$returns$__$",
+                              "typeString": "function (uint256,uint256) pure"
                             }
                           },
                           "id": 1750,
@@ -2541,8 +2518,8 @@
                           "src": "2373:43:9",
                           "tryCall": false,
                           "typeDescriptions": {
-                            "typeIdentifier": "t_error",
-                            "typeString": "error"
+                            "typeIdentifier": "t_tuple$__$",
+                            "typeString": "tuple()"
                           }
                         },
                         "id": 1751,
@@ -3172,19 +3149,16 @@
                 },
                 {
                   "AST": {
-                    "nativeSrc": "3221:78:9",
                     "nodeType": "YulBlock",
                     "src": "3221:78:9",
                     "statements": [
                       {
-                        "nativeSrc": "3235:54:9",
                         "nodeType": "YulAssignment",
                         "src": "3235:54:9",
                         "value": {
                           "arguments": [
                             {
                               "kind": "number",
-                              "nativeSrc": "3252:2:9",
                               "nodeType": "YulLiteral",
                               "src": "3252:2:9",
                               "type": "",
@@ -3196,13 +3170,11 @@
                                   "arguments": [
                                     {
                                       "name": "buffer",
-                                      "nativeSrc": "3270:6:9",
                                       "nodeType": "YulIdentifier",
                                       "src": "3270:6:9"
                                     },
                                     {
                                       "kind": "number",
-                                      "nativeSrc": "3278:4:9",
                                       "nodeType": "YulLiteral",
                                       "src": "3278:4:9",
                                       "type": "",
@@ -3211,17 +3183,14 @@
                                   ],
                                   "functionName": {
                                     "name": "add",
-                                    "nativeSrc": "3266:3:9",
                                     "nodeType": "YulIdentifier",
                                     "src": "3266:3:9"
                                   },
-                                  "nativeSrc": "3266:17:9",
                                   "nodeType": "YulFunctionCall",
                                   "src": "3266:17:9"
                                 },
                                 {
                                   "kind": "number",
-                                  "nativeSrc": "3285:2:9",
                                   "nodeType": "YulLiteral",
                                   "src": "3285:2:9",
                                   "type": "",
@@ -3230,29 +3199,24 @@
                               ],
                               "functionName": {
                                 "name": "keccak256",
-                                "nativeSrc": "3256:9:9",
                                 "nodeType": "YulIdentifier",
                                 "src": "3256:9:9"
                               },
-                              "nativeSrc": "3256:32:9",
                               "nodeType": "YulFunctionCall",
                               "src": "3256:32:9"
                             }
                           ],
                           "functionName": {
                             "name": "shr",
-                            "nativeSrc": "3248:3:9",
                             "nodeType": "YulIdentifier",
                             "src": "3248:3:9"
                           },
-                          "nativeSrc": "3248:41:9",
                           "nodeType": "YulFunctionCall",
                           "src": "3248:41:9"
                         },
                         "variableNames": [
                           {
                             "name": "hashValue",
-                            "nativeSrc": "3235:9:9",
                             "nodeType": "YulIdentifier",
                             "src": "3235:9:9"
                           }
@@ -3260,7 +3224,7 @@
                       }
                     ]
                   },
-                  "evmVersion": "cancun",
+                  "evmVersion": "london",
                   "externalReferences": [
                     {
                       "declaration": 1789,
@@ -3737,7 +3701,6 @@
                     "nodeType": "VariableDeclarationStatement",
                     "src": "3314:14:9"
                   },
-                  "isSimpleCounterLoop": false,
                   "loopExpression": {
                     "expression": {
                       "id": 1809,
@@ -4453,11 +4416,11 @@
   },
   "compiler": {
     "name": "solc",
-    "version": "0.8.28+commit.7893614a.Emscripten.clang"
+    "version": "0.8.20+commit.a1b79de6.Emscripten.clang"
   },
   "networks": {},
   "schemaVersion": "3.4.16",
-  "updatedAt": "2024-10-22T12:59:11.386Z",
+  "updatedAt": "2024-10-25T16:36:15.114Z",
   "devdoc": {
     "details": "String operations.",
     "errors": {
