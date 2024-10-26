@@ -11,8 +11,16 @@ npx hardhat compile
 ```bash
 npx hardhat test
 ```
+# Run a local hardhat node
+```bash
+    npx hardhat node
+```
 
 # Deploy Contracts locally
 ```bash
-    npx hardhat run migrations/1_deploy_contracts.js --network development --show-stack-traces
+    npx hardhat compile && npx hardhat run migrations/1_deploy_contracts.js --network development --show-stack-traces
 ```
+
+# Import ABI files to frontend
+ABI files are located in artifacts/contracts/<Contract>.sol/<Contract>.json
+

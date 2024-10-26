@@ -115,4 +115,12 @@ contract WineNFT is ERC721, Ownable {
     function getOwner(uint256 wineId) public view returns (address) {
         return ownerOf(wineId);
     }
+
+    function getAllWines() public view returns (Wine[] memory) {
+        return totalWines;
+    }
+
+    function getWineById(uint256 wineId) public view returns (Wine memory) {
+        return totalWines[wineId];
+    }
 }
