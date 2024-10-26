@@ -4,10 +4,10 @@ npm install
 ```
 # Compile Contracts
 ```
-truffle compile
+npx hardhat compile
 ```
 
 # Run Tests
 ```
-truffle test
+npx hardhat test
 ```
