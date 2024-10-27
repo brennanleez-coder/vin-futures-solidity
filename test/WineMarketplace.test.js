@@ -65,6 +65,15 @@ describe("WineMarketplace", function () {
         .addAddressToWhitelist(seller.address);
     });
 
+    it("List Wine NFT with price 0 should fail", async function () {
+      await wineNFT.connect(seller).approve(wineMarketplace.address, tokenId);
+      try {
+        await wineMarketplace.connect(seller).listNFT(tokenId, 0);
+      } catch (error) {
+        expect(error.message).to.include("Price must be greater than 0");
+      }
+    });
+
     it("Should list an NFT", async function () {
       await wineNFT.connect(seller).approve(wineMarketplace.address, tokenId);
       await wineMarketplace.connect(seller).listNFT(tokenId, nftPrice);
@@ -73,6 +82,5 @@ describe("WineMarketplace", function () {
       expect(listing.seller).to.equal(seller.address);
       expect(listing.price.toString()).to.equal(nftPrice.toString());
     });
-    
   });
 });
