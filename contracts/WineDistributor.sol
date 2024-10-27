@@ -15,7 +15,7 @@ contract WineDistributor {
         marketplace.buyNFT{value: msg.value}(tokenId);
     }
 
-    function listWineForSale(uint256 tokenId, uint256 price) public {
+    function listWineForResale(uint256 tokenId, uint256 price) public {
         marketplace.listNFT(tokenId, price);
     }
 

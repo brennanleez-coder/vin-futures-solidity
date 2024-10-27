@@ -134,4 +134,8 @@ contract WineMarketplace is Ownable {
     function isNFTListed(uint256 tokenId) public view returns (bool) {
         return listings[tokenId].seller != address(0);
     }
+
+    function getListing(uint256 tokenId) public view returns (Listing memory) {
+        return listings[tokenId];
+    }
 }

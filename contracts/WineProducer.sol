@@ -7,6 +7,16 @@ import "./WineNFT.sol";
 contract WineProducer {
     WineNFT public wineNFT;
 
+    event WineNFTCreated(
+        uint256 indexed wineId,
+        address indexed producer,
+        uint256 price,
+        uint16 vintage,
+        string grapeVariety,
+        uint16 numberOfBottles,
+        uint256 maturityDate
+    );
+
     constructor(WineNFT _wineNFT) {
         wineNFT = _wineNFT;
     }
@@ -17,7 +27,24 @@ contract WineProducer {
         string memory grapeVariety,
         uint16 numberOfBottles,
         uint256 maturityDate
-    ) public {
-        wineNFT.mintWine(msg.sender, price, vintage, grapeVariety, numberOfBottles, maturityDate);
+    ) public payable {
+        wineNFT.mintWine{value: msg.value}(
+            msg.sender,
+            price,
+            vintage,
+            grapeVariety,
+            numberOfBottles,
+            maturityDate
+        );
+
+        emit WineNFTCreated(
+            wineNFT.getAllWines().length,
+            msg.sender,
+            price,
+            vintage,
+            grapeVariety,
+            numberOfBottles,
+            maturityDate
+        );
     }
 }

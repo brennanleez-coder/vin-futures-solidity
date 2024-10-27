@@ -21,7 +21,9 @@ contract WineNFT is ERC721, Ownable {
     mapping(uint256 => Wine) public wines;
     Wine[] public totalWines;
 
-    constructor(address initialOwner) ERC721("Wine NFT", "WINE") Ownable(initialOwner) {
+    constructor(
+        address initialOwner
+    ) ERC721("Wine NFT", "WINE") Ownable(initialOwner) {
         initializeWines();
     }
 
@@ -31,17 +33,24 @@ contract WineNFT is ERC721, Ownable {
         address producer2 = 0x0000000000000000000000000000000000000002;
 
         for (uint256 i = 0; i < 20; i++) {
-            totalWines.push(Wine({
-                wineId: i + 1,
-                producer: i % 2 == 0 ? producer1 : producer2,
-                price: (i + 1) * 0.05 ether,  // Example price increment
-                vintage: uint16(2020 + (i % 3)),  // Vintages 2020, 2021, 2022
-                grapeVariety: i % 3 == 0 ? "Cabernet Sauvignon" : i % 3 == 1 ? "Merlot" : "Pinot Noir",
-                numberOfBottles: 100 + uint16(i * 5),  // Example number of bottles
-                maturityDate: block.timestamp + (365 * 24 * 60 * 60 * (1 + i % 5)), // Maturity date staggered over years
-                redeemed: false,
-                owner: address(0)  // No owner initially
-            }));
+            totalWines.push(
+                Wine({
+                    wineId: i + 1,
+                    producer: i % 2 == 0 ? producer1 : producer2,
+                    price: (i + 1) * 0.05 ether, // Example price increment
+                    vintage: uint16(2020 + (i % 3)), // Vintages 2020, 2021, 2022
+                    grapeVariety: i % 3 == 0
+                        ? "Cabernet Sauvignon"
+                        : i % 3 == 1
+                            ? "Merlot"
+                            : "Pinot Noir",
+                    numberOfBottles: 100 + uint16(i * 5), // Example number of bottles
+                    maturityDate: block.timestamp +
+                        (365 * 24 * 60 * 60 * (1 + (i % 5))), // Maturity date staggered over years
+                    redeemed: false,
+                    owner: address(0) // No owner initially
+                })
+            );
         }
     }
 
@@ -61,7 +70,7 @@ contract WineNFT is ERC721, Ownable {
         uint256 newWineId = numWineNFTs++;
         _mint(producer, newWineId);
 
-        wines[newWineId] = Wine({
+        Wine memory newWine = Wine({
             wineId: newWineId,
             producer: producer,
             price: price,
@@ -72,10 +81,12 @@ contract WineNFT is ERC721, Ownable {
             redeemed: false,
             owner: producer
         });
+        wines[newWineId] = newWine;
+
+        totalWines.push(newWine);
 
         return newWineId;
     }
-
 
     modifier ownerOnly(uint256 wineId) {
         require(
