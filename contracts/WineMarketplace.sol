@@ -10,6 +10,9 @@ contract WineMarketplace is Ownable {
         uint256 price;
     }
 
+    mapping(address => bool) public sellers;
+    mapping(address => bool) public buyers;
+
     WineNFT public wineNFT;
     mapping(uint256 => Listing) public listings;
 
@@ -24,7 +27,20 @@ contract WineMarketplace is Ownable {
 
     constructor(address _wineNFT, address initialOwner) Ownable(initialOwner) {
         wineNFT = WineNFT(_wineNFT);
+        initialiseBuyerAndSellerForDemo();
     }
+
+    function initialiseBuyerAndSellerForDemo() public onlyOwner {
+        // fake address 1
+        address fakeDistributorAddress = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4;
+        addAddressToWhitelist(fakeDistributorAddress);
+        buyers[fakeDistributorAddress] = true;
+        // fake address 2
+        address fakeProducerAddress = 0x7736181674417148E36204Ec540f6136A52879b6;
+        addAddressToWhitelist(fakeProducerAddress);
+        sellers[fakeProducerAddress] = true;
+    }
+
 
     modifier onlyTokenOwner(uint256 tokenId) {
         require(
@@ -137,5 +153,13 @@ contract WineMarketplace is Ownable {
 
     function getListing(uint256 tokenId) public view returns (Listing memory) {
         return listings[tokenId];
+    }
+
+    function isSeller(address _address) public view returns (bool) {
+        return sellers[_address];
+    }
+
+    function isBuyer(address _address) public view returns (bool) {
+        return buyers[_address];
     }
 }
