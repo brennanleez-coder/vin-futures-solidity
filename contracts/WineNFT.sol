@@ -20,7 +20,8 @@ contract WineNFT is ERC721, Ownable {
     uint256 public numWineNFTs;
     mapping(uint256 => Wine) public wines;
     Wine[] public totalWines;
-
+    address public wineMarketContract;
+    
     constructor(
         address initialOwner
     ) ERC721("Wine NFT", "WINE") Ownable(initialOwner) {
@@ -88,6 +89,15 @@ contract WineNFT is ERC721, Ownable {
         return newWineId;
     }
 
+    modifier ownerOrMarketOnly(uint256 wineId) {
+        require(
+            wines[wineId].owner == msg.sender ||
+                msg.sender == wineMarketContract,
+            "You are NOT the owner or authorized market"
+        );
+        _;
+    }
+
     modifier ownerOnly(uint256 wineId) {
         require(
             wines[wineId].owner == msg.sender,
@@ -107,21 +117,18 @@ contract WineNFT is ERC721, Ownable {
         }
     }
 
-    function transfer(
-        uint256 wineId,
-        address newOwner
-    ) public ownerOnly(wineId) {
-        try this.ownerOf(wineId) returns (address currentOwner) {
-            require(
-                currentOwner == msg.sender,
-                "You are not the owner of this Wine NFT"
-            );
+    function transfer(uint256 wineId, address newOwner) public ownerOrMarketOnly(wineId) {
+        address currentOwner = ownerOf(wineId);
+        
+        if (msg.sender == wineMarketContract) {
+            _transfer(currentOwner, newOwner, wineId);
+        } else {
+            require(currentOwner == msg.sender, "You are not the owner of this Wine NFT");
             _transfer(msg.sender, newOwner, wineId);
-            wines[wineId].owner = newOwner;
-        } catch {
-            revert("Wine NFT does not exist");
         }
+        wines[wineId].owner = newOwner;
     }
+
 
     function getOwner(uint256 wineId) public view returns (address) {
         return ownerOf(wineId);
@@ -133,5 +140,10 @@ contract WineNFT is ERC721, Ownable {
 
     function getWineById(uint256 wineId) public view returns (Wine memory) {
         return totalWines[wineId];
+    }
+
+    function setWineMarketContract(address _wineMarketContract) public {
+        // Add access control to ensure only the contract owner can set this
+        wineMarketContract = _wineMarketContract;
     }
 }

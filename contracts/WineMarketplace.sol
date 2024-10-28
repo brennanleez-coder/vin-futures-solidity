@@ -77,7 +77,7 @@ contract WineMarketplace is Ownable {
         require(listing.seller != address(0), "NFT not listed for sale");
         require(listing.seller != msg.sender, "Cannot buy your own NFT");
         require(msg.value >= listing.price, "Insufficient payment");
-
+        
         address payable sellerAddress = payable(listing.seller);
 
         uint256 price = listing.price;
