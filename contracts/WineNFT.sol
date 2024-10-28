@@ -106,15 +106,11 @@ contract WineNFT is ERC721, Ownable {
         _;
     }
 
-    function burnWine(uint256 wineId) public ownerOnly(wineId) {
-        try this.ownerOf(wineId) {
-            require(!wines[wineId].redeemed, "Wine has already been redeemed");
-            wines[wineId].redeemed = true;
-            _burn(wineId);
-            delete wines[wineId];
-        } catch {
-            revert("Wine NFT does not exist");
-        }
+    function burnWine(uint256 wineId) public ownerOrMarketOnly(wineId) {
+        require(!wines[wineId].redeemed, "Wine has already been redeemed");
+        wines[wineId].redeemed = true;
+        _burn(wineId);
+        delete wines[wineId];
     }
 
     function transfer(uint256 wineId, address newOwner) public ownerOrMarketOnly(wineId) {
@@ -146,4 +142,14 @@ contract WineNFT is ERC721, Ownable {
         // Add access control to ensure only the contract owner can set this
         wineMarketContract = _wineMarketContract;
     }
+
+    function getMaturityDate(uint256 wineId) public view returns (uint256) {
+        require(wines[wineId].wineId != 0, "Wine does not exist");
+        return wines[wineId].maturityDate;
+    }
+
+    function setMaturityDate(uint256 wineId, uint256 newMaturityDate) public {
+        wines[wineId].maturityDate = newMaturityDate;
+    }
+
 }

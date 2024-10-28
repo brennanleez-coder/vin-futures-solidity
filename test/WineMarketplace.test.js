@@ -82,5 +82,37 @@ describe("WineMarketplace", function () {
       expect(listing.seller).to.equal(seller.address);
       expect(listing.price.toString()).to.equal(nftPrice.toString());
     });
+
+    it("Unable to unlist NFT as you are not the seller", async function () {
+      await wineNFT.connect(seller).approve(wineMarketplace.address, tokenId);
+      await wineMarketplace.connect(seller).listNFT(tokenId, nftPrice);
+  
+      const listing = await wineMarketplace.getListing(tokenId);
+      expect(listing.seller).to.equal(seller.address);
+    
+      try {
+          await wineMarketplace.connect(buyer).cancelListing(tokenId);
+          expect.fail("Expected transaction to be reverted");
+      } catch (error) {
+        expect(error.message).to.include("You are not the owner of this token");
+      }
+    });
+  
+    it("Unlist an NFT", async function () {
+      await wineNFT.connect(seller).approve(wineMarketplace.address, tokenId);
+      await wineMarketplace.connect(seller).listNFT(tokenId, nftPrice);
+      const listing = await wineMarketplace.listings(tokenId);
+
+      expect(listing.seller).to.equal(seller.address);
+      expect(listing.price.toString()).to.equal(nftPrice.toString());
+
+      await wineMarketplace.connect(seller).cancelListing(tokenId);
+
+      const isListedAfterCancellation = await wineMarketplace.isNFTListed(tokenId);
+      expect(isListedAfterCancellation).to.be.false; 
+
+      const listingAfterCancellation = await wineMarketplace.getListing(tokenId);
+      expect(listingAfterCancellation.seller).to.equal(ethers.constants.AddressZero);
+    });
   });
 });
