@@ -11,7 +11,9 @@ contract WineMarketplace is Ownable {
     }
 
     mapping(address => bool) public sellers;
+    address[] public sellersList;
     mapping(address => bool) public buyers;
+    address[] public buyersList;
 
     WineNFT public wineNFT;
     mapping(uint256 => Listing) public listings;
@@ -156,10 +158,20 @@ contract WineMarketplace is Ownable {
     }
 
     function isSeller(address _address) public view returns (bool) {
-        return sellers[_address];
+        for (uint256 i = 0; i < sellersList.length; i++) {
+            if (sellersList[i] == _address) {
+                return true;
+            }
+        }
+        return false;
     }
 
     function isBuyer(address _address) public view returns (bool) {
-        return buyers[_address];
+        for (uint256 i = 0; i < buyersList.length; i++) {
+            if (buyersList[i] == _address) {
+                return true;
+            }
+        }
+        return false;
     }
 }
