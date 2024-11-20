@@ -33,14 +33,21 @@ contract WineMarketplace is Ownable {
     }
 
     function initialiseBuyerAndSellerForDemo() public onlyOwner {
-        // fake address 1
-        address fakeDistributorAddress = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4;
-        addAddressToWhitelist(fakeDistributorAddress);
-        buyers[fakeDistributorAddress] = true;
-        // fake address 2
-        address fakeProducerAddress = 0x7736181674417148E36204Ec540f6136A52879b6;
-        addAddressToWhitelist(fakeProducerAddress);
-        sellers[fakeProducerAddress] = true;
+        // Wine Producer Address is a seller only
+        address wineProducerAddress = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266;
+        addAddressToWhitelist(wineProducerAddress);
+        addSeller(wineProducerAddress);
+
+        // Wine Distributor 1 is both a buyer and a seller
+        address wineDistributor1Address = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8;
+        addAddressToWhitelist(wineDistributor1Address);
+        addSeller(wineDistributor1Address);
+        addBuyer(wineDistributor1Address);
+
+        // Wine Distributor 2 is a buyer only
+        address wineDistributor2Address = 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC;
+        addAddressToWhitelist(wineDistributor2Address);
+        addBuyer(wineDistributor2Address);
     }
 
 
@@ -173,5 +180,21 @@ contract WineMarketplace is Ownable {
             }
         }
         return false;
+    }
+
+    function addSeller(address sellerAddress) public onlyOwner {
+        require(sellerAddress != address(0), "Invalid address");
+        require(!sellers[sellerAddress], "Seller already added");
+        
+        sellers[sellerAddress] = true;
+        sellersList.push(sellerAddress);
+    }
+
+    function addBuyer(address buyerAddress) public onlyOwner {
+        require(buyerAddress != address(0), "Invalid address");
+        require(!buyers[buyerAddress], "Buyer already added");
+        
+        buyers[buyerAddress] = true;
+        buyersList.push(buyerAddress);
     }
 }
