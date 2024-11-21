@@ -28,7 +28,7 @@ contract WineProducer {
         uint16 numberOfBottles,
         uint256 maturityDate
     ) public payable {
-        wineNFT.mintWine{value: msg.value}(
+        uint256 wineId = wineNFT.mintWine{value: msg.value}(
             msg.sender,
             price,
             vintage,
@@ -37,8 +37,9 @@ contract WineProducer {
             maturityDate
         );
 
+        // Emit the event with the correct wineId
         emit WineNFTCreated(
-            wineNFT.getAllWines().length,
+            wineId, // Use the correct token ID returned from mintWine
             msg.sender,
             price,
             vintage,
