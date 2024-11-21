@@ -12,7 +12,8 @@ contract WineDistributor {
     }
 
     function buyWine(uint256 tokenId) public payable {
-        marketplace.buyNFT{value: msg.value}(tokenId);
+        require(msg.sender != address(0), "Buyer address cannot be zero");
+        marketplace.buyNFT{value: msg.value}(tokenId, msg.sender);
     }
 
     function listWineForResale(uint256 tokenId, uint256 price) public {

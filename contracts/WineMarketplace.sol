@@ -107,32 +107,37 @@ contract WineMarketplace is Ownable {
         emit NFTListed(tokenId, msg.sender, price);
     }
 
-    function buyNFT(uint256 tokenId) public payable {
+    function buyNFT(uint256 tokenId, address buyer) public payable {
         Listing memory listing = listings[tokenId];
         require(listing.seller != address(0), "NFT not listed for sale");
-        require(listing.seller != msg.sender, "Cannot buy your own NFT");
+        require(listing.seller != buyer, "Cannot buy your own NFT");
         require(msg.value >= listing.price, "Insufficient payment");
 
-        address payable sellerAddress = payable(listing.seller);
+        // Verify wine exists before proceeding
+        require(wineNFT._exists(tokenId), "Wine NFT does not exist");
 
+        address seller = listing.seller;
         uint256 price = listing.price;
 
         // Remove the listing
         delete listings[tokenId];
 
-        // Transfer the NFT to the buyer
-        wineNFT.transfer(tokenId, msg.sender);
+        require(
+            wineNFT.getApproved(tokenId) == address(this) ||
+                wineNFT.isApprovedForAll(seller, address(this)),
+            "Marketplace not approved to transfer NFT"
+        );
 
-        // Transfer payment to the seller
-        sellerAddress.transfer(price);
+        // Transfer the NFT directly to the buyer
+        wineNFT.transfer(tokenId, buyer);
 
-        // Refund any excess payment
-        uint256 excess = msg.value - price;
-        if (excess > 0) {
-            payable(msg.sender).transfer(excess);
-        }
+        // Update owner in WineNFT contract
+        wineNFT.updateOwner(tokenId, buyer);
 
-        emit NFTPurchased(tokenId, msg.sender);
+        // Transfer funds to the seller
+        payable(seller).transfer(price);
+
+        emit NFTPurchased(tokenId, buyer);
     }
 
     function redeemNFT(uint256 tokenId) public onlyTokenOwner(tokenId) {
