@@ -50,7 +50,6 @@ contract WineMarketplace is Ownable {
         addBuyer(wineDistributor2Address);
     }
 
-
     modifier onlyTokenOwner(uint256 tokenId) {
         require(
             wineNFT.ownerOf(tokenId) == msg.sender,
@@ -102,7 +101,7 @@ contract WineMarketplace is Ownable {
         require(listing.seller != address(0), "NFT not listed for sale");
         require(listing.seller != msg.sender, "Cannot buy your own NFT");
         require(msg.value >= listing.price, "Insufficient payment");
-        
+
         address payable sellerAddress = payable(listing.seller);
 
         uint256 price = listing.price;
@@ -185,7 +184,7 @@ contract WineMarketplace is Ownable {
     function addSeller(address sellerAddress) public onlyOwner {
         require(sellerAddress != address(0), "Invalid address");
         require(!sellers[sellerAddress], "Seller already added");
-        
+
         sellers[sellerAddress] = true;
         sellersList.push(sellerAddress);
     }
@@ -193,8 +192,33 @@ contract WineMarketplace is Ownable {
     function addBuyer(address buyerAddress) public onlyOwner {
         require(buyerAddress != address(0), "Invalid address");
         require(!buyers[buyerAddress], "Buyer already added");
-        
+
         buyers[buyerAddress] = true;
         buyersList.push(buyerAddress);
+    }
+
+    function getAllListedNFTs() public view returns (Listing[] memory) {
+        uint256 totalTokens = wineNFT.getTotalNFTs(); 
+        uint256 totalActiveListings = 0;
+
+        // Count active listings
+        for (uint256 i = 0; i < totalTokens; i++) {
+            if (listings[i].seller != address(0)) {
+                totalActiveListings++;
+            }
+        }
+
+        // Create an array for active listings
+        Listing[] memory activeListings = new Listing[](totalActiveListings);
+        uint256 index = 0;
+
+        for (uint256 i = 0; i < totalTokens; i++) {
+            if (listings[i].seller != address(0)) {
+                activeListings[index] = listings[i];
+                index++;
+            }
+        }
+
+        return activeListings;
     }
 }

@@ -152,4 +152,8 @@ contract WineNFT is ERC721, Ownable {
         wines[wineId].maturityDate = newMaturityDate;
     }
 
+    function getTotalNFTs() public view returns (uint256) {
+        return numWineNFTs;
+    }
+
 }
