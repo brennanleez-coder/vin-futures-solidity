@@ -24,6 +24,12 @@ async function deployContracts() {
   await wineMarketplace.deployed();
   console.log("WineMarketplace deployed to:", wineMarketplace.address);
 
+  // Set the wineMarketplace address in the WineNFT contract
+  console.log("Setting WineMarketplace address in WineNFT...");
+  const tx = await wineNFT.setWineMarketContract(wineMarketplace.address);
+  await tx.wait();
+  console.log("WineMarketplace address set in WineNFT successfully.");
+
   // Deploy WineProducer contract
   const WineProducer = await hre.ethers.getContractFactory("WineProducer");
   const wineProducer = await WineProducer.deploy(wineNFT.address);
@@ -37,11 +43,21 @@ async function deployContracts() {
   const wineDistributor = await WineDistributor.deploy(wineMarketplace.address);
   await wineDistributor.deployed();
   console.log("WineDistributor deployed to:", wineDistributor.address);
+
+  // Initialize roles in WineMarketplace (Optional: Demo setup)
+  console.log("Initializing roles in WineMarketplace...");
+  const initTx = await wineMarketplace.initialiseBuyerAndSellerForDemo();
+  await initTx.wait();
+  console.log("Roles initialized successfully in WineMarketplace.");
+
+  console.log("Deployment script completed successfully!");
 }
 
-deployContracts().then(() => {
-  process.exit(0);
-}).catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
+deployContracts()
+  .then(() => {
+    process.exit(0);
+  })
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });

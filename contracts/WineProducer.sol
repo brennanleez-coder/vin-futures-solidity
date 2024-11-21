@@ -10,6 +10,8 @@ contract WineProducer {
     event WineNFTCreated(
         uint256 indexed wineId,
         address indexed producer,
+        string wineName,
+        string wineDescription,
         uint256 price,
         uint16 vintage,
         string grapeVariety,
@@ -22,6 +24,8 @@ contract WineProducer {
     }
 
     function createWineNFT(
+        string memory wineName,
+        string memory wineDescription,
         uint256 price,
         uint16 vintage,
         string memory grapeVariety,
@@ -29,6 +33,8 @@ contract WineProducer {
         uint256 maturityDate
     ) public payable {
         uint256 wineId = wineNFT.mintWine{value: msg.value}(
+            wineName,
+            wineDescription,
             msg.sender,
             price,
             vintage,
@@ -37,10 +43,11 @@ contract WineProducer {
             maturityDate
         );
 
-        // Emit the event with the correct wineId
         emit WineNFTCreated(
-            wineId, // Use the correct token ID returned from mintWine
+            wineId,
             msg.sender,
+            wineName,
+            wineDescription,
             price,
             vintage,
             grapeVariety,

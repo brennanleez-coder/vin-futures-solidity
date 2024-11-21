@@ -35,19 +35,30 @@ contract WineMarketplace is Ownable {
     function initialiseBuyerAndSellerForDemo() public onlyOwner {
         // Wine Producer Address is a seller only
         address wineProducerAddress = 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266;
-        addAddressToWhitelist(wineProducerAddress);
-        addSeller(wineProducerAddress);
+        if (!sellers[wineProducerAddress]) {
+            addAddressToWhitelist(wineProducerAddress);
+            addSeller(wineProducerAddress);
+        }
 
         // Wine Distributor 1 is both a buyer and a seller
         address wineDistributor1Address = 0x70997970C51812dc3A010C7d01b50e0d17dc79C8;
-        addAddressToWhitelist(wineDistributor1Address);
-        addSeller(wineDistributor1Address);
-        addBuyer(wineDistributor1Address);
+        if (
+            !sellers[wineDistributor1Address] ||
+            !buyers[wineDistributor1Address]
+        ) {
+            addAddressToWhitelist(wineDistributor1Address);
+            if (!sellers[wineDistributor1Address])
+                addSeller(wineDistributor1Address);
+            if (!buyers[wineDistributor1Address])
+                addBuyer(wineDistributor1Address);
+        }
 
         // Wine Distributor 2 is a buyer only
         address wineDistributor2Address = 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC;
-        addAddressToWhitelist(wineDistributor2Address);
-        addBuyer(wineDistributor2Address);
+        if (!buyers[wineDistributor2Address]) {
+            addAddressToWhitelist(wineDistributor2Address);
+            addBuyer(wineDistributor2Address);
+        }
     }
 
     modifier onlyTokenOwner(uint256 tokenId) {
@@ -96,7 +107,7 @@ contract WineMarketplace is Ownable {
         emit NFTListed(tokenId, msg.sender, price);
     }
 
-    function buyNFT(uint256 tokenId) public payable onlyWhitelisted {
+    function buyNFT(uint256 tokenId) public payable {
         Listing memory listing = listings[tokenId];
         require(listing.seller != address(0), "NFT not listed for sale");
         require(listing.seller != msg.sender, "Cannot buy your own NFT");
@@ -106,11 +117,16 @@ contract WineMarketplace is Ownable {
 
         uint256 price = listing.price;
 
+        // Remove the listing
         delete listings[tokenId];
 
+        // Transfer the NFT to the buyer
         wineNFT.transfer(tokenId, msg.sender);
+
+        // Transfer payment to the seller
         sellerAddress.transfer(price);
 
+        // Refund any excess payment
         uint256 excess = msg.value - price;
         if (excess > 0) {
             payable(msg.sender).transfer(excess);
@@ -119,19 +135,19 @@ contract WineMarketplace is Ownable {
         emit NFTPurchased(tokenId, msg.sender);
     }
 
-    function redeemNFT(
-        uint256 tokenId
-    ) public onlyTokenOwner(tokenId) onlyWhitelisted {
+    function redeemNFT(uint256 tokenId) public onlyTokenOwner(tokenId) {
         try wineNFT.wines(tokenId) returns (
-            uint256 /* wineId */,
-            address /* producer */,
-            uint256 /* price */,
-            uint16 /* vintage */,
-            string memory /* grapeVariety */,
-            uint16 /* numberOfBottles */,
+            uint256 wineId,
+            string memory wineName,
+            string memory wineDescription,
+            address producer,
+            uint256 price,
+            uint16 vintage,
+            string memory grapeVariety,
+            uint16 numberOfBottles,
             uint256 maturityDate,
             bool redeemed,
-            address /* owner */
+            address owner
         ) {
             require(
                 maturityDate <= block.timestamp,
@@ -198,7 +214,7 @@ contract WineMarketplace is Ownable {
     }
 
     function getAllListedNFTs() public view returns (Listing[] memory) {
-        uint256 totalTokens = wineNFT.getTotalNFTs(); 
+        uint256 totalTokens = wineNFT.getTotalNFTs();
         uint256 totalActiveListings = 0;
 
         // Count active listings
