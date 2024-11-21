@@ -166,4 +166,22 @@ contract WineNFT is ERC721, Ownable {
     function _exists(uint256 tokenId) public view returns (bool) {
         return _ownerOf(tokenId) != address(0);
     }
+
+    function isRedeemed(uint256 wineId) public view returns (bool) {
+        return wines[wineId].redeemed;
+    }
+
+    function redeemWine(uint256 wineId) public {
+        require(
+            ownerOf(wineId) == msg.sender,
+            "Only the owner can redeem this NFT"
+        );
+        require(!wines[wineId].redeemed, "Wine is already redeemed");
+        require(
+            block.timestamp >= wines[wineId].maturityDate,
+            "Wine is not mature yet"
+        );
+
+        wines[wineId].redeemed = true;
+    }
 }
